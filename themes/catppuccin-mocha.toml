@@ -1,0 +1,36 @@
+name = "Mocha"
+family = "Catppuccin"
+desc = "Warm dark pastel palette from Catppuccin v1.7.1."
+light = false
+font = "Sans"
+font-size-heading = 18
+font-size-body = 14
+font-weight-heading = 700
+font-weight-body = 400
+rounding-factor = 6
+bar-height = 32
+panel-padding = 0
+panel-gap = 0
+
+[colors]
+color0 = "#45475a"
+color1 = "#f38ba8"
+color2 = "#a6e3a1"
+color3 = "#f9e2af"
+color4 = "#89b4fa"
+color5 = "#f5c2e7"
+color6 = "#94e2d5"
+color7 = "#a6adc8"
+color8 = "#585b70"
+color9 = "#f37799"
+color10 = "#89d88b"
+color11 = "#ebd391"
+color12 = "#74a8fc"
+color13 = "#f2aede"
+color14 = "#6bd7ca"
+color15 = "#bac2de"
+background = "#1e1e2e"
+surface = "#313244"
+accent = "#cba6f7"
+text = "#cdd6f4"
+muted = "#a6adc8"

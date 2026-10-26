@@ -1,0 +1,36 @@
+name = "Latte"
+family = "Catppuccin"
+desc = "Light pastel palette from Catppuccin v1.7.1."
+light = true
+font = "Sans"
+font-size-heading = 18
+font-size-body = 14
+font-weight-heading = 700
+font-weight-body = 400
+rounding-factor = 6
+bar-height = 32
+panel-padding = 0
+panel-gap = 0
+
+[colors]
+color0 = "#5c5f77"
+color1 = "#d20f39"
+color2 = "#40a02b"
+color3 = "#df8e1d"
+color4 = "#1e66f5"
+color5 = "#ea76cb"
+color6 = "#179299"
+color7 = "#acb0be"
+color8 = "#6c6f85"
+color9 = "#de293e"
+color10 = "#49af3d"
+color11 = "#eea02d"
+color12 = "#456eff"
+color13 = "#fe85d8"
+color14 = "#2d9fa8"
+color15 = "#bcc0cc"
+background = "#eff1f5"
+surface = "#ccd0da"
+accent = "#8839ef"
+text = "#4c4f69"
+muted = "#6c6f85"

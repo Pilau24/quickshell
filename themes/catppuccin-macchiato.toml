@@ -1,0 +1,36 @@
+name = "Macchiato"
+family = "Catppuccin"
+desc = "Balanced dark pastel palette from Catppuccin v1.7.1."
+light = false
+font = "Sans"
+font-size-heading = 18
+font-size-body = 14
+font-weight-heading = 700
+font-weight-body = 400
+rounding-factor = 0
+bar-height = 24
+panel-padding = 0
+panel-gap = 0
+
+[colors]
+color0 = "#494d64"
+color1 = "#ed8796"
+color2 = "#a6da95"
+color3 = "#eed49f"
+color4 = "#8aadf4"
+color5 = "#f5bde6"
+color6 = "#8bd5ca"
+color7 = "#a5adcb"
+color8 = "#5b6078"
+color9 = "#ec7486"
+color10 = "#8ccf7f"
+color11 = "#e1c682"
+color12 = "#78a1f6"
+color13 = "#f2a9dd"
+color14 = "#63cbc0"
+color15 = "#b8c0e0"
+background = "#24273a"
+surface = "#363a4f"
+accent = "#c6a0f6"
+text = "#cad3f5"
+muted = "#a5adcb"

@@ -1,0 +1,36 @@
+name = "Frappé"
+family = "Catppuccin"
+desc = "Muted dark pastel palette from Catppuccin v1.7.1."
+light = false
+font = "Sans"
+font-size-heading = 18
+font-size-body = 14
+font-weight-heading = 700
+font-weight-body = 400
+rounding-factor = 6
+bar-height = 32
+panel-padding = 0
+panel-gap = 0
+
+[colors]
+color0 = "#51576d"
+color1 = "#e78284"
+color2 = "#a6d189"
+color3 = "#e5c890"
+color4 = "#8caaee"
+color5 = "#f4b8e4"
+color6 = "#81c8be"
+color7 = "#a5adce"
+color8 = "#626880"
+color9 = "#e67172"
+color10 = "#8ec772"
+color11 = "#d9ba73"
+color12 = "#7b9ef0"
+color13 = "#f2a4db"
+color14 = "#5abfb5"
+color15 = "#b5bfe2"
+background = "#303446"
+surface = "#414559"
+accent = "#ca9ee6"
+text = "#c6d0f5"
+muted = "#a5adce"
