@@ -5,12 +5,18 @@ Item {
 
   required property var config
   required property var clock
+  property bool panelOpen: false
   property int maxHeight: 432
 
   implicitWidth: 280
-  implicitHeight: notifCard.expanded ? root.maxHeight : calendarCard.y + calendarCard.height + 8 + notifCard.collapsedHeight
+  implicitHeight: root.shownHeight
+  clip: true
 
-  Behavior on implicitHeight {
+  readonly property real calendarBottom: calendarCard.y + calendarCard.height + 8
+  readonly property real targetHeight: Math.min(root.maxHeight, root.calendarBottom + (notifCard.expanded ? notifCard.expandedHeight : notifCard.collapsedHeight))
+  property real shownHeight: root.targetHeight
+
+  Behavior on shownHeight {
     NumberAnimation { duration: 250; easing.type: Easing.OutCubic }
   }
 
@@ -37,10 +43,11 @@ Item {
   RecentNotificationsCard {
     id: notifCard
     config: root.config
+    panelOpen: root.panelOpen
     anchors.top: calendarCard.bottom
     anchors.topMargin: 8
     anchors.left: parent.left
     anchors.right: parent.right
-    anchors.bottom: parent.bottom
+    height: root.targetHeight - root.calendarBottom
   }
 }

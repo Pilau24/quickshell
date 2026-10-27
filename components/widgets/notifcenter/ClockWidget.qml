@@ -39,6 +39,7 @@ Item {
     ClockDashboard {
       config: root.config
       clock: systemClock
+      panelOpen: panel.open
       maxHeight: root.screen.height - root.barHeight - 2 * root.config.panelMargin - root.config.panelPadding
     }
   }

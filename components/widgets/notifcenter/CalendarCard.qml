@@ -149,7 +149,7 @@ Card {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             text: dayCell.cell.getDate()
-            color: dayCell.cell.getMonth() === root.firstOfShown().getMonth() ? root.config.panelText : root.config.muted
+            color: dayCell.isToday ? root.config.barBackground : dayCell.cell.getMonth() === root.firstOfShown().getMonth() ? root.config.panelText : root.config.muted
             font.family: root.config.barFont
             font.pixelSize: root.config.textSm
             font.weight: root.config.barFontWeight
