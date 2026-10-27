@@ -14,7 +14,7 @@ Item {
   property bool important: false
   visible: important || screen.name === config.resolvedPrimaryMonitor
 
-  readonly property string timeText: Qt.formatTime(clock.date, "HH:mm:ss")
+  readonly property string timeText: Qt.formatTime(clock.date, "hh:mm:ss")
 
   SystemClock {
     id: clock

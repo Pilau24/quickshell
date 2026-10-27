@@ -2,7 +2,6 @@ pragma ComponentBehavior: Bound
 
 import Quickshell
 import QtQuick
-import "."
 import "components/core"
 import "components/widgets"
 
@@ -26,20 +25,6 @@ ShellRoot {
           anchors.leftMargin: 8
           anchors.verticalCenter: parent.verticalCenter
           spacing: 8
-
-          ClockWidget {
-            slot: bar.leftSlot
-            screen: bar.screen
-            config: configLoader
-            barHeight: configLoader.barHeight
-          }
-
-          ClockWidget {
-            slot: bar.leftSlot
-            screen: bar.screen
-            config: configLoader
-            barHeight: configLoader.barHeight
-          }
         }
 
         Row {
