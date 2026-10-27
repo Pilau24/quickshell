@@ -10,8 +10,7 @@ Card {
   property bool panelOpen: false
   readonly property int collapsedCount: 3
   readonly property real listHeight: root.notifications.length === 0 ? emptyText.implicitHeight + 12 : notifList.itemsHeight
-  readonly property real collapsedHeight: 12 + header.height + 6 + root.listHeight + (moreText.visible ? moreText.implicitHeight + 18 : 12)
-  readonly property real expandedHeight: 12 + header.height + 6 + root.listHeight + (moreText.visible ? moreText.implicitHeight + 18 : 12)
+  readonly property real contentHeight: 12 + header.height + 6 + root.listHeight + (moreText.visible ? moreText.implicitHeight + 18 : 12)
   property real bootEpochMs: 0
 
   Process {
@@ -93,22 +92,15 @@ Card {
     anchors.topMargin: 12
     height: 31
 
-    Row {
-      id: titleRow
+    Text {
+      id: notifTitle
       anchors.left: parent.left
       anchors.verticalCenter: parent.verticalCenter
-      spacing: 6
-
-      Text {
-        id: notifTitle
-        height: 22
-        verticalAlignment: Text.AlignVCenter
-        text: "NOTIFICATIONS"
-        color: root.config.accent
-        font.family: root.config.barFont
-        font.pixelSize: root.config.textBase
-        font.weight: Font.Bold
-      }
+      text: "NOTIFICATIONS"
+      color: root.config.accent
+      font.family: root.config.barFont
+      font.pixelSize: root.config.textBase
+      font.weight: Font.Bold
     }
 
     Row {
@@ -123,60 +115,24 @@ Card {
         width: 28
         height: 28
 
-        Rectangle {
+        PillButton {
           anchors.fill: parent
-          radius: root.config.roundingPx
-          color: dndArea.containsMouse ? Qt.alpha(root.config.muted, 0.35) : Qt.alpha(root.config.muted, 0.15)
-          border.width: 1
-          border.color: Qt.alpha(root.config.muted, 0.3)
-        }
-
-        Text {
-          id: dndLabel
-          anchors.centerIn: parent
+          config: root.config
           text: dndButton.active ? "\udb80\udca0" : "\uf0f3"
-          color: dndButton.active ? root.config.muted : root.config.accent
-          font.family: root.config.barFont
-          font.pixelSize: root.config.textBase
-          font.weight: root.config.barFontWeight
-        }
-
-        MouseArea {
-          id: dndArea
-          anchors.fill: parent
-          cursorShape: Qt.PointingHandCursor
-          hoverEnabled: true
+          textColor: dndButton.active ? root.config.muted : root.config.accent
+          pixelSize: root.config.textBase
           onClicked: pauseProc.running = true
         }
       }
 
-      Rectangle {
-        id: clearPill
+      PillButton {
         height: 28
-        width: clearLabel.implicitWidth + 26
-        radius: root.config.roundingPx
-        color: clearArea.containsMouse ? Qt.alpha(root.config.muted, 0.35) : Qt.alpha(root.config.muted, 0.15)
-        border.width: 1
-        border.color: Qt.alpha(root.config.muted, 0.3)
-
-        Text {
-          id: clearLabel
-          anchors.centerIn: parent
-          text: "CLEAR"
-          color: root.config.panelText
-          font.family: root.config.barFont
-          font.pixelSize: root.config.textXs
-          font.letterSpacing: 1.5
-          font.weight: root.config.barFontWeight
-        }
-
-        MouseArea {
-          id: clearArea
-          anchors.fill: parent
-          hoverEnabled: true
-          cursorShape: Qt.PointingHandCursor
-          onClicked: clearProc.running = true
-        }
+        config: root.config
+        text: "CLEAR"
+        textColor: root.config.panelText
+        pixelSize: root.config.textXs
+        letterSpacing: 1.5
+        onClicked: clearProc.running = true
       }
 
     }

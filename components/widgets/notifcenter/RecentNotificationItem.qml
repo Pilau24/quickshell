@@ -10,6 +10,15 @@ Rectangle {
   property string appIconPath: ""
   property bool menuOpen: false
   readonly property string appIconSource: appIconPath ? "file://" + appIconPath : ""
+  readonly property real textBlock: root.config.textXs + root.config.textBase + root.config.textSm * 2
+  readonly property real iconSize: Math.round(textBlock * 1.08)
+  readonly property real pad: Math.round(textBlock * 0.3)
+  readonly property real gap: Math.round(textBlock * 0.2)
+  readonly property real iconGap: Math.round(textBlock * 0.35)
+  readonly property real lineGap: Math.round(textBlock * 0.06)
+  readonly property real inlineGap: Math.round(textBlock * 0.1)
+  readonly property real menuWidth: Math.round(textBlock * 2.6)
+  readonly property real menuRowHeight: Math.round(root.config.textXs * 2.4)
 
   Process {
     id: closeProc
@@ -50,9 +59,6 @@ Rectangle {
   radius: root.config.roundingPx
   border.width: 1
   border.color: Qt.alpha(root.config.muted, 0.25)
-  readonly property real textBlock: root.config.textXs + root.config.textBase + root.config.textSm * 2
-  readonly property real iconSize: Math.round(textBlock * 1.08)
-  readonly property real pad: Math.round(textBlock * 0.3)
   height: Math.max(content.implicitHeight, iconSize) + pad * 2
 
   function timeAgo(ms) {
@@ -101,11 +107,11 @@ Rectangle {
   Column {
     id: content
     anchors.left: appIcon.right
-    anchors.leftMargin: Math.round(root.textBlock * 0.35)
+    anchors.leftMargin: root.iconGap
     anchors.right: menuDots.left
-    anchors.rightMargin: Math.round(root.textBlock * 0.2)
+    anchors.rightMargin: root.gap
     anchors.top: appIcon.top
-    spacing: Math.round(root.textBlock * 0.06)
+    spacing: root.lineGap
 
     Item {
       id: appRow
@@ -115,7 +121,7 @@ Rectangle {
       Text {
         id: appText
         x: 0
-        width: Math.min(implicitWidth, appRow.width - timeText.implicitWidth - 6)
+        width: Math.min(implicitWidth, appRow.width - timeText.implicitWidth - root.inlineGap)
         text: root.notification.app_name.toUpperCase()
         color: root.config.accent
         font.family: root.config.barFont
@@ -126,7 +132,7 @@ Rectangle {
 
       Text {
         id: timeText
-        x: appText.width + 6
+        x: appText.width + root.inlineGap
         y: appText.baselineOffset - timeText.baselineOffset
         text: "• " + root.timeAgo(root.notification.time)
         color: root.config.muted
@@ -190,7 +196,7 @@ Rectangle {
     anchors.topMargin: 4
     anchors.right: parent.right
     anchors.rightMargin: root.pad
-    width: Math.round(root.textBlock * 2.6)
+    width: root.menuWidth
     height: menuColumn.implicitHeight + 8
     radius: root.config.roundingPx
     color: root.config.panelSurface
@@ -208,16 +214,16 @@ Rectangle {
         delegate: Rectangle {
           required property var modelData
           width: menuColumn.width
-          height: Math.round(root.config.textXs * 2.4)
+          height: root.menuRowHeight
           radius: root.config.roundingPx
           color: rowArea.containsMouse ? Qt.alpha(root.config.muted, 0.2) : "transparent"
 
           Text {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
-            anchors.leftMargin: Math.round(root.textBlock * 0.2)
+            anchors.leftMargin: root.gap
             anchors.right: parent.right
-            anchors.rightMargin: Math.round(root.textBlock * 0.2)
+            anchors.rightMargin: root.gap
             text: modelData === "dismiss" ? "Dismiss" : "Open page  " + modelData
             color: root.config.panelText
             font.family: root.config.barFont

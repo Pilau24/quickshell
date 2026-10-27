@@ -13,7 +13,7 @@ Item {
   clip: true
 
   readonly property real calendarBottom: calendarCard.y + calendarCard.height + 8
-  readonly property real targetHeight: Math.min(root.maxHeight, root.calendarBottom + (notifCard.expanded ? notifCard.expandedHeight : notifCard.collapsedHeight))
+  readonly property real targetHeight: Math.min(root.maxHeight, root.calendarBottom + notifCard.contentHeight)
   property real shownHeight: root.targetHeight
 
   Behavior on shownHeight {
