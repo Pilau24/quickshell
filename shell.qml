@@ -3,7 +3,7 @@ pragma ComponentBehavior: Bound
 import Quickshell
 import QtQuick
 import "components/core"
-import "components/widgets"
+import "components/widgets/notifcenter"
 
 ShellRoot {
   Config { id: configLoader }
@@ -28,12 +28,14 @@ ShellRoot {
         }
 
         Row {
-          anchors.centerIn: parent
+          anchors.right: parent.right
+          anchors.rightMargin: 8
+          anchors.verticalCenter: parent.verticalCenter
           spacing: 8
 
           ClockWidget {
-            important: true
-            slot: bar.centerSlot
+            important: false
+            slot: bar.rightSlot
             screen: bar.screen
             config: configLoader
             barHeight: configLoader.barHeight

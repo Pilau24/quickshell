@@ -1,6 +1,6 @@
 import Quickshell
 import QtQuick
-import "../core"
+import "../../core"
 
 // qmllint disable unqualified
 Item {
@@ -14,10 +14,10 @@ Item {
   property bool important: false
   visible: important || screen.name === config.resolvedPrimaryMonitor
 
-  readonly property string timeText: Qt.formatTime(clock.date, "hh:mm:ss")
+  readonly property string timeText: Qt.formatTime(systemClock.date, "hh:mm:ss")
 
   SystemClock {
-    id: clock
+    id: systemClock
     precision: SystemClock.Seconds
   }
 
@@ -28,8 +28,25 @@ Item {
       text: root.timeText
       color: root.config.barText
       font.family: root.config.barFont
-      font.pixelSize: root.config.barFontSize
+      font.pixelSize: root.config.textSm
       font.weight: root.config.barFontWeight
+    }
+  }
+
+  Component {
+    id: panelContent
+
+    ClockDashboard {
+      config: root.config
+      clock: systemClock
+      maxHeight: root.screen.height - root.barHeight - 2 * root.config.panelMargin - root.config.panelPadding
+    }
+  }
+
+  Connections {
+    target: root.config
+    function onThemeLoadedChanged() {
+      if (root.config.themeLoaded && root.visible && !panel.open) panel.toggle()
     }
   }
 
@@ -49,6 +66,7 @@ Item {
     config: root.config
     barHeight: root.barHeight
     slot: root.slot
-    content: timeContent
+    content: panelContent
+    maxContentHeight: root.screen.height - root.barHeight - 2 * root.config.panelMargin
   }
 }

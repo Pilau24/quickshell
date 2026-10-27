@@ -1,3 +1,5 @@
 # Copy to config.toml. Missing or invalid values fall back to Config.qml defaults.
 currentTheme = "catppuccin-mocha"
 primaryMonitor = "HDMI-A-1"
+# Keeps panels open when clicking outside or pressing Escape.
+debug = false

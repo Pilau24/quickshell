@@ -33,11 +33,13 @@ PanelWindow {
   BarSlot { id: rightBarSlot; align: "right" }
 
   DismissLayer {
+    config: root.config
     targetScreen: root.screen
     slots: root.slots
   }
 
   readonly property alias leftSlot: leftBarSlot
   readonly property alias centerSlot: centerBarSlot
+  readonly property alias rightSlot: rightBarSlot
   readonly property var slots: [leftBarSlot, centerBarSlot, rightBarSlot]
 }

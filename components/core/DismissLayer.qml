@@ -6,6 +6,7 @@ import QtQuick
 PanelWindow {
   id: root
 
+  required property var config
   required property var targetScreen
   required property var slots
 
@@ -16,7 +17,7 @@ PanelWindow {
   }
 
   screen: root.targetScreen
-  visible: anyOpen
+  visible: anyOpen && !config.debug
   anchors { top: true; bottom: true; left: true; right: true }
   color: "transparent"
   WlrLayershell.layer: WlrLayer.Top

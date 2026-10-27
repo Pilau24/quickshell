@@ -13,6 +13,7 @@ Item {
   property var theme: null
   property bool themeLoaded: false
   property bool themeFallbackAttempted: false
+  property bool debug: false
   readonly property var themeIds: [
     "catppuccin-latte",
     "catppuccin-frappe",
@@ -23,13 +24,23 @@ Item {
 
   readonly property color barBackground: theme ? theme.colors.background : "#1e1e2e"
   readonly property color barText: theme ? theme.colors.text : "#cdd6f4"
+  readonly property color panelSurface: theme ? theme.colors.surface : "#313244"
+  readonly property color accent: theme ? theme.colors.accent : "#cba6f7"
+  readonly property color panelText: theme ? theme.colors.text : "#cdd6f4"
+  readonly property color muted: theme ? theme.colors.muted : "#a6adc8"
   readonly property string barFont: theme ? theme.font : "Sans"
   readonly property int barFontSize: theme ? theme["font-size-body"] : 14
   readonly property int barFontWeight: theme ? theme["font-weight-body"] : 400
+  readonly property int textXs: theme ? theme["text-xs"] : 12
+  readonly property int textSm: theme ? theme["text-sm"] : 14
+  readonly property int textBase: theme ? theme["text-base"] : 16
+  readonly property int textLg: theme ? theme["text-lg"] : 18
+  readonly property int textXl: theme ? theme["text-xl"] : 20
+  readonly property int text2xl: theme ? theme["text-2xl"] : 24
   readonly property int barHeight: theme ? theme["bar-height"] : defaultBarHeight
+  readonly property int panelMargin: theme ? theme["panel-margin"] : 0
   readonly property int panelPadding: theme ? theme["panel-padding"] : 0
-  readonly property int panelGap: theme ? theme["panel-gap"] : 0
-  readonly property real roundingFactor: theme ? theme["rounding-factor"] : 6
+  readonly property int roundingPx: theme ? theme["rounding-px"] : 6
   readonly property string configPath: Quickshell.shellDir + "/config.toml"
 
   function setSetting(key, value) {
@@ -85,6 +96,7 @@ Item {
           if (typeof config.primaryMonitor === "string" && config.primaryMonitor.length > 0) {
             root.primaryMonitor = config.primaryMonitor
           }
+          if (typeof config.debug === "boolean") root.debug = config.debug
           root.loadTheme()
         } catch (error) {
           console.warn("Failed to load config.toml; using default settings:", error)
@@ -116,10 +128,16 @@ Item {
               || !Number.isFinite(loadedTheme["font-size-body"])
               || !Number.isFinite(loadedTheme["font-weight-heading"])
               || !Number.isFinite(loadedTheme["font-weight-body"])
-              || !Number.isFinite(loadedTheme["rounding-factor"])
+              || !Number.isFinite(loadedTheme["text-xs"])
+              || !Number.isFinite(loadedTheme["text-sm"])
+              || !Number.isFinite(loadedTheme["text-base"])
+              || !Number.isFinite(loadedTheme["text-lg"])
+              || !Number.isFinite(loadedTheme["text-xl"])
+              || !Number.isFinite(loadedTheme["text-2xl"])
+              || !Number.isInteger(loadedTheme["rounding-px"])
               || !Number.isInteger(loadedTheme["bar-height"])
+              || !Number.isInteger(loadedTheme["panel-margin"])
               || !Number.isInteger(loadedTheme["panel-padding"])
-              || !Number.isInteger(loadedTheme["panel-gap"])
               || typeof loadedTheme.colors !== "object"
               || requiredColors.some(name => typeof loadedTheme.colors[name] !== "string"
                 || !/^#[0-9a-fA-F]{6}$/.test(loadedTheme.colors[name]))) {

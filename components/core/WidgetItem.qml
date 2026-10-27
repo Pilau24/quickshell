@@ -11,7 +11,7 @@ Rectangle {
   implicitWidth: loader.implicitWidth + 16
   implicitHeight: root.config.barHeight
   color: root.config.barBackground
-  radius: root.config.roundingFactor * root.cornerScale
+  radius: root.config.roundingPx * root.cornerScale
 
   Loader {
     id: loader
