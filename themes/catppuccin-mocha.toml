@@ -7,16 +7,16 @@ font-size-heading = 18
 font-size-body = 14
 font-weight-heading = 700
 font-weight-body = 400
-text-xs = 12
-text-sm = 14
+text-xs = 8
+text-sm = 10
 text-base = 16
 text-lg = 18
 text-xl = 20
 text-2xl = 24
-rounding-px = 6
-bar-height = 32
-panel-padding = 0
-panel-gap = 16
+rounding-px = 4
+bar-height = 24
+panel-margin = 10
+panel-padding = 16
 
 [colors]
 color0 = "#45475a"
