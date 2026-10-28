@@ -44,12 +44,12 @@ Item {
     }
   }
 
-  Connections {
-    target: root.config
-    function onThemeLoadedChanged() {
-      if (root.config.themeLoaded && root.visible && !panel.open) panel.toggle()
-    }
-  }
+  // Connections {
+  //   target: root.config
+  //   function onThemeLoadedChanged() {
+  //     if (root.config.themeLoaded && root.visible && !panel.open) panel.toggle()
+  //   }
+  // }
 
   implicitWidth: item.implicitWidth
   implicitHeight: item.implicitHeight

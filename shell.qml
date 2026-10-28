@@ -4,6 +4,7 @@ import Quickshell
 import QtQuick
 import "components/core"
 import "components/widgets/notifcenter"
+import "components/widgets/workspaces"
 
 ShellRoot {
   Config { id: configLoader }
@@ -25,6 +26,13 @@ ShellRoot {
           anchors.leftMargin: 8
           anchors.verticalCenter: parent.verticalCenter
           spacing: 8
+
+          WorkspacesWidget {
+            screen: bar.screen
+            config: configLoader
+            barHeight: configLoader.barHeight
+            slot: bar.leftSlot
+          }
         }
 
         Row {
