@@ -14,13 +14,14 @@ Item {
   required property int barHeight
   required property var slot
 
-  readonly property int dotSize: 8
+  readonly property int dotSize: 10
   readonly property int pillWidth: 20
   readonly property int reservedCount: 10
 
   property var workspaceIds: []
   property int activeId: -1
   property var urgentIds: []
+  property var backgroundIds: []
 
   implicitWidth: row.width
   implicitHeight: dotSize
@@ -50,6 +51,7 @@ Item {
     const active = Hyprland.monitorFor(root.screen)?.activeWorkspace
     root.activeId = active ? active.id : -1
     root.urgentIds = open.filter(ws => ws.urgent).map(ws => ws.id)
+    root.backgroundIds = onScreen.filter(ws => ws.lastIpcObject?.windows > 0).map(ws => ws.id)
   }
 
   Component.onCompleted: refreshWorkspaces()
@@ -75,11 +77,14 @@ Item {
 
         readonly property bool focused: modelData === root.activeId
         readonly property bool urgent: root.urgentIds.includes(modelData)
+        readonly property bool background: root.backgroundIds.includes(modelData)
 
         width: focused ? root.pillWidth : root.dotSize
         height: root.dotSize
         radius: height / 2
-        color: focused ? root.config.accent : urgent ? root.config.barText : root.config.muted
+        color: focused ? root.config.accent : urgent ? root.config.barBackground : background ? root.config.muted : root.config.panelSurface
+        border.width: urgent && !focused ? 2 : 0
+        border.color: root.config.urgent
 
         Behavior on width {
           NumberAnimation {

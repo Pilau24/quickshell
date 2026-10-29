@@ -28,8 +28,8 @@ Item {
       text: root.timeText
       color: root.config.barText
       font.family: root.config.barFont
-      font.pixelSize: root.config.textSm
-      font.weight: root.config.barFontWeight
+      font.pixelSize: root.config.textBase
+      font.weight: Font.Bold
     }
   }
 
