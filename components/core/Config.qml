@@ -14,6 +14,7 @@ Item {
   property bool themeLoaded: false
   property bool themeFallbackAttempted: false
   property bool debug: false
+  property bool showTray: true
   readonly property var themeIds: [
     "catppuccin-latte",
     "catppuccin-frappe",
@@ -114,6 +115,7 @@ Item {
             root.primaryMonitor = config.primaryMonitor
           }
           if (typeof config.debug === "boolean") root.debug = config.debug
+          if (typeof config.showTray === "boolean") root.showTray = config.showTray
           root.loadTheme()
         } catch (error) {
           console.warn("Failed to load config.toml; using default settings:", error)

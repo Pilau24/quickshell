@@ -8,7 +8,7 @@ Rectangle {
   property real cornerScale: 1
   signal clicked()
 
-  implicitWidth: loader.implicitWidth + 16
+  implicitWidth: loader.implicitWidth
   implicitHeight: root.config.barHeight
   color: root.config.barBackground
   radius: root.config.roundingPx * root.cornerScale

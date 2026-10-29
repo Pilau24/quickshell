@@ -1,3 +1,4 @@
+//@ pragma UseQApplication
 pragma ComponentBehavior: Bound
 
 import Quickshell
@@ -5,6 +6,7 @@ import QtQuick
 import "components/core"
 import "components/widgets/notifcenter"
 import "components/widgets/workspaces"
+import "components/widgets/tray"
 
 ShellRoot {
   Config { id: configLoader }
@@ -40,6 +42,13 @@ ShellRoot {
           anchors.rightMargin: 8
           anchors.verticalCenter: parent.verticalCenter
           spacing: 8
+
+          TrayWidget {
+            screen: bar.screen
+            config: configLoader
+            barHeight: configLoader.barHeight
+            slot: bar.rightSlot
+          }
 
           ClockWidget {
             important: false
